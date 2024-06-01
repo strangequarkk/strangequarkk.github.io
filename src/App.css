@@ -1,0 +1,74 @@
+:root {
+  --top-nav-height: 4rem;
+  --color1: #877c9b;
+  --color2: #7187f0;
+}
+
+#root {
+  width: 100vw;
+  text-align: center;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 6rem 1fr 6rem;
+}
+
+.toggle-bar {
+  background-color: var(--color1);
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.toggle-bar.bar-open {
+  grid-row-end: 3;
+}
+
+.navbar {
+  background-color: var(--color2);
+  height: 4rem;
+  grid-column-start: 2;
+  grid-column-end: span 1;
+}
+
+main {
+  overflow-y: scroll;
+  max-height: calc(100vh - var(--top-nav-height));
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+main.bar-open {
+  grid-column-start: 2;
+}
+
+main.rbar-closed {
+  grid-column-end: 4;
+}
+
+/* 
+If you wanted to keep the toggle state logic inside the togglebar component,
+you could use sibling selectors to allow main to react to its sibling's states.
+Does *not* work on older browsers, might be incompatible with blazor's css isolation principles.
+
+main:has(+ .rbar-closed) {
+  grid-column-end: 4;
+}
+
+.bar-open + main {
+  grid-column-start: 2;
+} */
+
+.toolbar {
+  background-color: #877c9b;
+  grid-column-start: 3;
+  grid-row-start: 1;
+}
+
+.toolbar.rbar-open {
+  grid-row-end: 3;
+}

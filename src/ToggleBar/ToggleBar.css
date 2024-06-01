@@ -1,0 +1,19 @@
+.menu-options {
+  max-width: 100%;
+  max-height: 100vh;
+}
+
+.bar-open .menu-options {
+  height: 100vh;
+}
+
+.menu-options nav {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: calc(100vh - var(--top-nav-height));
+}
+
+.menu-options nav a {
+  color: white;
+}
